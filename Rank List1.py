@@ -126,7 +126,7 @@ urlDict = getURLFromBilibili()
 import pandas as pd 
 import os
 
-"""修改地址"""
+"""修改文件存储地址"""
 out_path="D:/bilibili/2020_10_21/"
 
 if not os.path.exists(out_path):
