@@ -3,13 +3,12 @@
 Created on Thu May 21 12:01:25 2020
 @author: huzey
 
-读取Rank List产生的csv文件，并下载为txt文件，里面包含time comment两个类别
+读取Rank List2 产生的csv文件，并下载为txt文件，里面包含time comment两个类别
 csv文件和产生的txt文件在同一文件夹下
 程序会自动为不同分区建立子文件夹
 使用方法：在标记处直接修改保存地址，运行后就可得到一堆csv文件
 ！！！请勿随意改动
 针对2020.10.16改版之前的旧B站排行榜
-现在已经废弃
 """
 
 import pandas as pd
@@ -137,9 +136,9 @@ for typetemp in typeItem :#  在这里修改分区   typeItem4
                     # 弹幕编号 + BV号
                     ioFunc(commentList,SavePath +'_'+temp_url)
                     print("Finish.")
-
-    time.sleep(180) #表示秒  爬取一个分区休息3min
     print("----Pause---3min----")
+    time.sleep(180) #表示秒  爬取一个分区休息3min
+    
 
 
 
