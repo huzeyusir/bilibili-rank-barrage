@@ -1,6 +1,6 @@
 # bilibili-barrage
-get bilibili barrage
-
+# get bilibili barrage
+## 从B站（bilibili）排行榜爬取信息核弹幕：视频名称，视频网址，播放数量，弹幕数量，up主，视频分数
 
 # 使用方法：
 
