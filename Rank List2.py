@@ -4,17 +4,17 @@
 Created on Wed May 20 16:49:37 2020
 BILIBILI 视频列表信息爬取
 @author: huzey
-
+"""
+"""
 爬取思路
 1.分别在不同排行榜下爬取信息
 2.信息包含有：视频BV号,BV地址，视频排名，视频名称，综合评分，up主名称
-3.将这些信息保存在一个DataFrame里，最后保存为csv表格
+3.将这些信息保存在一个DataFrame里，最后保存为Excel表格
 使用方法：在标记处直接修改保存地址，运行后就可得到一堆csv文件
 ！！！请勿随意改动
 针对2020.10.16以后，改版的新的B站排行榜网页
 https://www.bilibili.com/v/popular/rank/all
 """
-
 import requests
 import re
 from bs4 import BeautifulSoup
@@ -90,10 +90,40 @@ def getURLFromBilibili():# 获取各种各样排行的榜单的信息
                     urlDict[title]=destinaTionUrl
                     
     return urlDict
+"""
 
-'''
-学习一下 find_all()
-'''
+def getURLFromBilibili():
+    areatype={
+        'all':'全站',
+        'bangumi':'番剧',
+        'guochan':'国产动画',
+        'guochuang':'国创相关',
+        'documentary':'纪录片',
+        'douga':'动画',
+        'music':'音乐',
+        'dance':'舞蹈',
+        'game':'游戏',
+        'technology':'科技',  #后改名为知识
+        'digital':'数码',
+        'life':'生活',
+        'food':'美食',
+        'kichiku':'鬼畜',
+        'fashion':'时尚',
+        'ent':'娱乐',
+        'cinephile':'影视',
+        'movie':'电影',
+        'tv':'电视剧',
+        'origin':'原创',
+        'rookie':'新人',
+    }
+    urlDict={}#存放相应url的字典
+    for areatypeItem in areatype.keys():
+        title=areatype[areatypeItem]
+        destinaTionUrl='https://www.bilibili.com/v/popular/rank/{}'.format(areatypeItem)
+        urlDict[title]=destinaTionUrl         
+    return urlDict
+
+
 def getPage(url):
     # 爬取单个页面,核心代码，返回页面的list
     spider=Spider(url)
@@ -130,7 +160,7 @@ urlDict = getURLFromBilibili()
 import pandas as pd 
 import os
 
-"""修改文件储存地址"""
+"""修改文件存储地址"""
 out_path="D:/bilibili/2020_10_21/"
 
 if not os.path.exists(out_path):
